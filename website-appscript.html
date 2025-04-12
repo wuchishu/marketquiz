@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Apps Script 應用教學 - 網路行銷學習平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="min-h-screen bg-gray-50">
+        <!-- 頁首 -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-12">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-3xl font-bold mb-4">Google Apps Script 應用教學</h1>
+                <p class="text-xl max-w-3xl mx-auto">
+                    學習如何使用 Google Apps Script 自動化工作流程，處理表單數據，打造測驗系統
+                </p>
+            </div>
+        </div>
+
+        <!-- 導航欄 -->
+        <nav class="bg-white shadow">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center py-4">
+                    <a href="index.html" class="font-bold text-xl text-gray-800">網路行銷學習平台</a>
+                    <div class="space-x-4">
+                        <a href="index.html" class="px-3 py-2 text-gray-700 hover:text-blue-600">首頁</a>
+                        <a href="website-homepage.html" class="px-3 py-2 text-gray-700 hover:text-blue-600">課程內容</a>
+                        <a href="website-exam-creation.html" class="px-3 py-2 text-gray-700 hover:text-blue-600">題庫製作</a>
+                        <a href="website-appscript.html" class="px-3 py-2 text-blue-600 border-b-2 border-blue-600">Apps Script</a>
+                        <a href="website-manual.html" class="px-3 py-2 text-gray-700 hover:text-blue-600">使用手冊</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 內容區域 -->
+        <div class="container mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row">
+                <!-- 側邊欄 -->
+                <div class="w-full md:w-1/4 mb-6 md:mb-0 md:pr-4">
+                    <div class="bg-white shadow rounded-lg overflow-hidden sticky top-4">
+                        <div class="bg-blue-600 text-white px-4 py-3 font-medium">
+                            目錄
+                        </div>
+                        <div class="divide-y">
+                            <a href="#intro" class="px-4 py-2 text-left block w-full bg-blue-100 text-blue-800 font-medium border-l-4 border-blue-600">
+                                什麼是 Google Apps Script
+                            </a>
+                            <a href="#basics" class="px-4 py-2 text-left block w-full text-gray-700 hover:bg-gray-100">
+                                Apps Script 基礎語法
+                            </a>
+                            <a href="#services" class="px-4 py-2 text-left block w-full text-gray-700 hover:bg-gray-100">
+                                Google 服務整合
+                            </a>
+                            <a href="#form-integration" class="px-4 py-2 text-left block w-full text-gray-700 hover:bg-gray-100">
+                                表單資料處理
+                            </a>
+                            <a href="#quiz-creation" class="px-4 py-2 text-left block w-full text-gray-700 hover:bg-gray-100">
+                                測驗系統建立
+                            </a>
+                            <a href="#examples" class="px-4 py-2 text-left block w-full text-gray-700 hover:bg-gray-100">
+                                實用範例程式碼
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 主要內容 -->
+                <div class="w-full md:w-3/4">
+                    <div class="bg-white shadow rounded-lg p-6">
+                        <div id="intro">
+                            <h2 class="text-2xl font-bold text-gray-800 mb-6">什麼是 Google Apps Script</h2>
+                            <p class="text-gray-700 mb-6">
+                                Google Apps Script 是一個基於 JavaScript 的開發平台，讓您能夠輕鬆地整合和自動化各種 Google 服務，包括 Gmail、Google Sheets、Forms、Drive、Calendar 等。
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h3 class="font-bold text-gray-800 mb-3">主要特點</h3>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li class="flex items-center">
+                                            <span class="text-blue-500 mr-2">✓</span> 基於 JavaScript 語法，易於學習
+                                        </li>
+                                        <li class="flex items-center">
+                                            <span class="text-blue-500 mr-2">✓</span> 免費使用，無需安裝特殊軟件
+                                        </li>
+                                        <li class="flex items-center">
+                                            <span class="text-blue-500 mr-2">✓</span> 雲端執行，無需自己管理伺服器
+                                        </li>
+                                        <li class="flex items-center">
+                                            <span class="text-blue-500 mr-2">✓</span> 能夠存取和處理 Google 服務中的數據
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h3 class="font-bold text-gray-800 mb-3">常見應用場景</h3>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li class="flex items-center">
+                                            <span class="text-blue-500 mr-2">✓</span> 表單回應自動處理
+                                        </li>
+                                        <li class="flex items-center">
+                                            <span class="text-blue-500 mr-2">✓</span> 批量建立文件或表單
+                                        </li>
+                                        <li class="flex items-center">
+                                            <span class="text-blue-500 mr-2">✓</span> 數據自動整理和分析
+                                        </li>
+                                        <li class="flex items-center">
+                                            <span class="text-blue-500 mr-2">✓</span> 電子郵件自動化回覆
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                                <h3 class="font-bold text-gray-800 mb-2">為什麼網路行銷人員應該學習 Apps Script？</h3>
+                                <p class="text-gray-700">
+                                    網路行銷工作經常需要處理大量數據、建立問卷調查、分析結果並生成報告。
+                                    通過學習 Apps Script，您可以自動化這些重複性工作，節省大量時間，
+                                    並能夠創建更複雜的客製化工具，提升工作效率。
+                                </p>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Apps Script 與表單整合</h3>
+                            <p class="text-gray-700 mb-4">
+                                在網路行銷中，Google 表單是收集用戶資料的重要工具。使用 Apps Script，我們可以：
+                            </p>
+                            
+                            <div class="space-y-4 mb-6">
+                                <div class="bg-gray-100 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800">自動建立表單</h4>
+                                    <p class="text-gray-700">
+                                        批量從現有資料創建測驗或調查表單，節省手動創建的時間。
+                                    </p>
+                                </div>
+                                <div class="bg-gray-100 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800">自動處理回應</h4>
+                                    <p class="text-gray-700">
+                                        當用戶提交表單時，自動處理回應，例如發送確認郵件或更新數據庫。
+                                    </p>
+                                </div>
+                                <div class="bg-gray-100 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800">生成自訂報告</h4>
+                                    <p class="text-gray-700">
+                                        根據表單回應自動生成圖表、報告或儀表板，幫助數據可視化。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="examples" class="mt-12 pt-8 border-t border-gray-200">
+                            <h2 class="text-2xl font-bold text-gray-800 mb-6">實用範例程式碼</h2>
+                            
+                            <div class="border border-gray-200 rounded-lg p-4 mb-6">
+                                <h4 class="font-bold text-gray-800 mb-2">測驗系統功能範例</h4>
+                                <pre class="bg-gray-100 p-3 rounded text-sm overflow-x-auto">
+// 創建一個帶有選擇題的測驗表單
+function createQuizForm() {
+  // 創建表單並啟用測驗功能
+  var form = FormApp.create('網路行銷知識測驗');
+  form.setIsQuiz(true);
+  
+  // 添加問題
+  var question = form.addMultipleChoiceItem();
+  question.setTitle('下列哪項是 SEO 的主要目標？')
+         .setPoints(5) // 設定分數
+         .setChoices([
+           question.createChoice('增加社交媒體點讚數', false),
+           question.createChoice('提高搜尋引擎排名', true),
+           question.createChoice('增加付費廣告展示次數', false),
+           question.createChoice('減少網站訪問流量', false)
+         ]);
+  
+  // 添加正確答案的解釋
+  question.setFeedbackForCorrect(
+    FormApp.createFeedback()
+      .setText('正確！SEO 的主要目標是提高網站在搜尋引擎的自然排名。')
+      .build()
+  );
+  
+  // 添加錯誤答案的解釋
+  question.setFeedbackForWrong(
+    FormApp.createFeedback()
+      .setText('不正確。SEO (搜尋引擎最佳化) 的主要目標是提高網站在搜尋引擎的自然排名。')
+      .build()
+  );
+  
+  Logger.log('測驗表單已創建: ' + form.getPublishedUrl());
+}
+                                </pre>
+                            </div>
+                            
+                            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4">
+                                <p class="text-gray-700">
+                                    <strong>學習建議：</strong> 如果您是 JavaScript 初學者，建議先學習基本的 JavaScript 語法，再深入研究 Apps Script。
+                                    您可以從簡單的腳本開始，例如自動處理表單回應或創建簡單的測驗，逐步掌握更複雜的功能。
+                                </p>
+                            </div>
+                            
+                            <div class="mt-8 text-center">
+                                <p class="text-gray-700 mb-4">想嘗試建立自己的題庫測驗？</p>
+                                <a href="website-exam-creation.html" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
+                                    前往題庫製作教學
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 頁尾 -->
+        <footer class="bg-gray-800 text-white py-8 mt-12">
+            <div class="container mx-auto px-4 text-center">
+                <p class="mb-2">網路行銷學習平台 © 2025</p>
+                <p class="text-gray-400">為初學者打造的網路行銷學習平台</p>
+                <div class="mt-4">
+                    <a href="index.html" class="text-gray-400 hover:text-white mx-2">首頁</a>
+                    <a href="website-manual.html" class="text-gray-400 hover:text-white mx-2">使用手冊</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
